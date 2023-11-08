@@ -1,0 +1,52 @@
+{
+    "en":
+    [
+        {
+            "name": "Crimson Log",
+            "fix": "Crimson Stem"
+        },
+        {
+            "name": "Crimson Wood",
+            "fix": "Crimson Hyphae"
+        },
+        {
+            "name": "Stripped Crimson Log",
+            "fix": "Stripped Crimson Stem"
+        },
+        {
+            "name": "Stripped Crimson Wood",
+            "fix": "Stripped Crimson Hyphae"
+        },
+        {
+            "name": "Warped Log",
+            "fix": "Warped Stem"
+        },
+        {
+            "name": "Warped Wood",
+            "fix": "Warped Hyphae"
+        },
+        {
+            "name": "Stripped Warped Log",
+            "fix": "Stripped Warped Stem"
+        },
+        {
+            "name": "Stripped Warped Wood",
+            "fix": "Stripped Warped Hyphae"
+        },
+        {
+            "name": "Hardened Clay",
+            "fix": "Terracotta"
+        },
+        {
+            "name": "Grass Path",
+            "fix": "Dirt Path"
+        }
+    ],
+    "ru":
+    [
+        {
+            "name": "Забор из незерского кирпича",
+            "fix": "Незерский забор"
+        }
+    ]
+}
