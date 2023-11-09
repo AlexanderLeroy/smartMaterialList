@@ -142,7 +142,15 @@ export function getSortedList() {
               material.crafts = [];
 
               //Проверка цикличных крафтов
-              if (blocksForCraft.findIndex((check) => check === materialCraft.material) === -1) {
+              let cycleCheck = true;
+              if (materialCraft.length > 0) {
+                materialCraft.forEach(el => {
+                  if (blocksForCraft.findIndex((check) => check === el.material) !== -1) {
+                    cycleCheck = false;
+                  }
+                });
+              }
+              if (cycleCheck) {
                 blocksForCraft.push(material.id);
                 if (materialCraft.length > 0) {
                   materialCraft.forEach(newCraft => {
@@ -199,11 +207,21 @@ function addInList(array, el) {
 function addInListWithCraft(array, el, craft) {
   let index = array.findIndex((schema) => schema.id === el.id);
   if (index === -1) {
-    el.crafts.push(craft);
+    let craftIndex = el.crafts.findIndex((schema) => schema.id === craft.id);
+    if (craftIndex === -1) {
+      el.crafts.push(craft);
+    } else {
+      el.crafts[craftIndex].amount += craft.amount;
+    }
     array.push(el);
   } else {
     array[index].amount += el.amount;
-    array[index].crafts.push(craft);
+    let craftIndex = array[index].crafts.findIndex((schema) => schema.id === craft.id);
+    if (craftIndex === -1) {
+      array[index].crafts.push(craft);
+    } else {
+      array[index].crafts[craftIndex].amount += craft.amount;
+    }
   }
   return array;
 }
