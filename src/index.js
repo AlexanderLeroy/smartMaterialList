@@ -8,6 +8,7 @@ import * as routerApp from "./components/router.js";
 
 let craftState = false;
 let schemes = [];
+//localStorage.clear("schemes");
 let schemesGet = JSON.parse(localStorage.getItem("schemes"));
 let customCrafts = JSON.parse(localStorage.getItem("crafts"));
 if (schemesGet != null) {
@@ -50,8 +51,8 @@ export function uploadSchemes(files) {
       schemesSave[index].fileName = item.fileName;
       schemesSave[index].content = [];
       item.content.forEach(el => {
-        schemesSave[index].content.push({"id": Object.assign({}, el.id), 
-        "amount": Object.assign({}, el.amount)});
+        schemesSave[index].content.push({"id": el.id, 
+        "amount": el.amount});
       });
     })
   }
@@ -383,7 +384,18 @@ export function checkCraftState (state) {
 //Удаление файла схемата
 export function removeSchema(index) {
   schemes.splice(index, 1);
-  localStorage.setItem("schemes", JSON.stringify(schemes));
+  let schemesSave = [];
+  if (schemes != null) {
+    schemes.map((item, index) => {
+      schemesSave[index] = {};
+      schemesSave[index].fileName = item.fileName;
+      schemesSave[index].content = [];
+      item.content.forEach(el => {
+        schemesSave[index].content.push({"id": el.id, "amount": el.amount});
+      });
+    })
+  }
+  localStorage.setItem("schemes", JSON.stringify(schemesSave));
 };
 
 //Установка стандартных крафтов
